@@ -55,6 +55,26 @@ In your django project folder, run the `migrate` command to create database tabl
 
     python manage.py migrate
 
+# Testing
+
+The sourcenet project has a small but growing set of unit tests that once can auto-run. These tests use django's testing framework, built on top of the Python `unittest` package.
+
+## Unit tests
+
+### Configuration
+
+#### Database configuration
+
+In order to run unit tests, your database configuration in `settings.py` will need to be connecting to the database with a user who is allowed to create databases. When django runs unit tests, it creates a test database, then deletes it once testing is done.
+
+- _NOTE: This means the database user you use for unit testing SHOULD NOT be the user you'd use in production. The production database user should not be able to do anything outside a given database._
+
+### Running unit tests
+
+In your django project folder, run the `test` command to run unit tests for this project:
+
+    python manage.py test django_messages.tests
+
 # License
 
 Copyright 2016-present (2016) Jonathan Morgan

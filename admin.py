@@ -45,7 +45,7 @@ class MessageAdmin( admin.ModelAdmin ):
         ),
     ]
 
-    list_display = ( 'id', 'application', 'message', 'label', )
+    list_display = ( 'last_modified', 'id', 'application', 'message', 'label' )
     list_display_links = ( 'id', 'message', )
     list_filter = [ 'application', 'label', 'status' ]
     search_fields = [ 'id', 'application', 'message', 'label', 'status' ]

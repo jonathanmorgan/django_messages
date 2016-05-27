@@ -32,6 +32,12 @@ class Message( models.Model ):
     STATUS_ERROR = "error"
     STATUS_DEFAULT = STATUS_NEW
     
+    STATUS_CHOICES = (
+        ( STATUS_NEW, "New" ),
+        ( STATUS_WARNING, "Warning" ),
+        ( STATUS_ERROR, "Error" )
+    )
+    
     # applications
     APPLICATION_CORE = Config_Property.APPLICATION_CORE
     APPLICATION_DEFAULT = Config_Property.APPLICATION_DEFAULT
@@ -43,6 +49,7 @@ class Message( models.Model ):
     application = models.CharField( max_length = 255 )
     message = models.TextField()
     label = models.CharField( max_length = 255, blank = True, null = True )
+    #status = models.CharField( max_length = 255, blank = True, null = True, choices = STATUS_CHOICES, default = STATUS_DEFAULT )
     status = models.CharField( max_length = 255, blank = True, null = True )
     tags = TaggableManager( blank = True )
     create_date = models.DateTimeField( auto_now_add = True )
