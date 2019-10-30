@@ -1,5 +1,9 @@
 # django_messages
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3523211.svg)](https://doi.org/10.5281/zenodo.3523211)
+
+<!-- TOC -->
+
 A simple re-usable Django application for storing messages from within django that should support both Python 2 and 3.  It only uses admin and ORM, no external-facing templates or pages.
 
 To start, just puts them in a database.  Eventually, might add ways to send them other places as well (email, message queue, etc.).
