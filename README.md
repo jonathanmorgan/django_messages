@@ -1,6 +1,8 @@
 # django_messages
 
-A simple re-usable Django application for storing messages from within django that should support both Python 2 and 3.  To start, just puts them in a database.  Eventually, might add ways to send them other places as well (email, message queue, etc.).
+A simple re-usable Django application for storing messages from within django that should support both Python 2 and 3.  It only uses admin and ORM, no external-facing templates or pages.
+
+To start, just puts them in a database.  Eventually, might add ways to send them other places as well (email, message queue, etc.).
 
 # Installation
 
@@ -13,25 +15,27 @@ Assumptions:
 
 - install python_utilites in your django project:
 
-        cd <django_project_directory>
-        git clone https://github.com/jonathanmorgan/python_utilities
-        pip install -r ./python_utilities/requirements.txt
+        pip install python-utilities-jsm
         
 - install django_config and its requirements in your django project:
 
-        cd <django_project_directory>
-        git clone https://github.com/jonathanmorgan/django_config.git
-        pip install -r ./django_config/requirements.txt
+        pip install django-basic-config
         
-- install this project:
+- install this project.  Either:
 
-        cd <django_project_directory>
-        git clone https://github.com/jonathanmorgan/django_messages.git
-        pip install -r ./django_messages/requirements.txt
+    - install using pip:
+
+            pip install django-basic-messages
+
+    - or install from source:
+
+            cd <django_project_directory>
+            git clone https://github.com/jonathanmorgan/django_messages.git
+            pip install -r ./django_messages/requirements.txt
 
 # Configuration
 
-Update `settings.py` so that `taggit`, `django_config` and `django_messages` are in your `INSTALLED_APPS`.  Use the new-style apps.py syntax for `django_config` and `django_messages`.  The result should look like:
+Update `settings.py` so that `taggit`, `django_config` and `django_messages` are in your `INSTALLED_APPS`.  Use the new-style apps.py syntax for `django_config` - `'django_config.apps.Django_ConfigConfig'`, and `django_messages` - `'django_messages.apps.DjangoMessagesConfig'`.  The result should look like:
 
     INSTALLED_APPS = [
         'django.contrib.auth',
@@ -77,7 +81,7 @@ In your django project folder, run the `test` command to run unit tests for this
 
 # License
 
-Copyright 2016-present (2016) Jonathan Morgan
+Copyright 2016-present (2019) Jonathan Morgan
 
 This file is part of [https://github.com/jonathanmorgan/django_messages](https://github.com/jonathanmorgan/django_messages).
 
