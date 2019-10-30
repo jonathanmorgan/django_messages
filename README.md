@@ -1,6 +1,6 @@
 # django_messages
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3523229.svg)](https://doi.org/10.5281/zenodo.3523229)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3523210.svg)](https://doi.org/10.5281/zenodo.3523210)
 
 <!-- TOC -->
 
