@@ -8,10 +8,10 @@
 
 - move the following files into `django_messages_build`:
 
-    - django_config/build/LICENSE
-    - django_config/build/MANIFEST.in
-    - django_config/build/setup.py
-    - django_config/README.md
+    - django_messages/build/LICENSE
+    - django_messages/build/MANIFEST.in
+    - django_messages/build/setup.py
+    - django_messages/README.md
 
 - make sure you have `setuptools`, `wheel`, and `twine` packages installed in the Python environment you are using to build.
 - in the `django_messages_build` folder:
