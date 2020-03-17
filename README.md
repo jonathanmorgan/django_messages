@@ -85,7 +85,7 @@ In your django project folder, run the `test` command to run unit tests for this
 
 # License
 
-Copyright 2016-present (2019) Jonathan Morgan
+Copyright 2020 Jonathan Morgan
 
 This file is part of [https://github.com/jonathanmorgan/django_messages](https://github.com/jonathanmorgan/django_messages).
 
