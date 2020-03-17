@@ -9,7 +9,6 @@ import six
 # django imports
 from django.db import models
 import django.utils.encoding
-from django.utils.encoding import python_2_unicode_compatible
 
 # django_config
 from django_config.models import Config_Property
@@ -19,7 +18,6 @@ from django_config.models import Config_Property
 #from python_utilities.status.status_container import StatusContainer
 
 # Message model
-@python_2_unicode_compatible
 class Message( models.Model ):
     
     #---------------------------------------------------------------------------
