@@ -57,6 +57,35 @@ Update `settings.py` so that `taggit`, `django_config` and `django_messages` are
         'django_messages.apps.DjangoMessagesConfig',
     ]
 
+# Usage
+
+To create and retrieve messages:
+
+    # django_messages imports
+    from django_messages.models import Message
+
+    # set up message values
+    application = "unit_test"
+    message = "test message"
+    label = "test"
+    status = Message.STATUS_NEW
+    tag_list = [ "awesome", "test" ]
+    
+    # create instance
+    # make instance
+    message_instance = Message.create_message( message,
+                                               application_IN = application,
+                                               label_IN = label,
+                                               tag_list_IN = tag_list,
+                                               status_IN = status )
+
+    # get all messages
+    message_qs = Message.objects.all()
+    
+    # get message for application
+    message_qs = message_qs.filter( application = application )
+    message_instance = message_qs.get()
+
 # Database
 
 In your django project folder, run the `migrate` command to create database table(s) for newly installed application(s):
