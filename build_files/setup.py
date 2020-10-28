@@ -9,7 +9,7 @@ os.chdir(os.path.normpath(os.path.join(os.path.abspath(__file__), os.pardir)))
 
 setuptools.setup(
     name="django-basic-messages", # Replace with your own username
-    version="1.0.1",
+    version="1.0.3",
     author="Jonathan Morgan",
     author_email="jonathan.morgan.007@gmail.com",
     description="A simple re-usable Django application for sending and receiving messages from within django.",
