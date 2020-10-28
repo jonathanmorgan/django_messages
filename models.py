@@ -66,6 +66,7 @@ class Message( models.Model ):
     @classmethod
     def create_message( cls, 
                         message_IN,
+                        message_type_IN = None,
                         application_IN = APPLICATION_DEFAULT,
                         label_IN = None,
                         tag_list_IN = None,
@@ -89,61 +90,66 @@ class Message( models.Model ):
         new_message = None
         tag_to_apply = None
         
-        # got a message and application?
+        # got message?
         if ( ( message_IN is not None ) and ( message_IN != "" ) ):
         
+            # got message. Create Message.
+            new_message = cls()
+            
+            # set message in instance.
+            new_message.message = message_IN
+            
+            # got a message_type?
+            if ( ( message_type_IN is not None ) and ( message_type_IN != "" ) ):
+                
+                # yes. Store it.
+                new_message.message_type = message_type_IN
+                
+            #-- END check to see if message type. --#
+
             # got an application?
             if ( ( application_IN is not None ) and ( application_IN != "" ) ):
             
-                # got both message and application.  Create message.
-                new_message = cls()
-                
-                # set message and application in instance.
-                new_message.message = message_IN
+                # yes. Store it.
                 new_message.application = application_IN
                 
-                # got a label?
-                if ( ( label_IN is not None ) and ( label_IN != "" ) ):
+            #-- END check to see if application. --#
+            
+            # got a label?
+            if ( ( label_IN is not None ) and ( label_IN != "" ) ):
 
-                    # yes.  Set it.
-                    new_message.label = label_IN
+                # yes.  Set it.
+                new_message.label = label_IN
 
-                #-- END check to see if label --#
+            #-- END check to see if label --#
+            
+            # got a status?
+            if ( ( status_IN is not None ) and ( status_IN != "" ) ):
+
+                # yes.  Set it.
+                new_message.status = status_IN
+
+            #-- END check to see if status --#
+            
+            # save message, so it exists to append tags to.
+            new_message.save()
+            
+            # got a list of one or more tags?
+            if ( ( tag_list_IN is not None ) and ( isinstance( tag_list_IN, list ) == True ) and ( len( tag_list_IN ) > 0 ) ):
+
+                # yes.  Loop over tags list.
+                for tag_to_apply in tag_list_IN:
                 
-                # got a status?
-                if ( ( status_IN is not None ) and ( status_IN != "" ) ):
-
-                    # yes.  Set it.
-                    new_message.status = status_IN
-
-                #-- END check to see if status --#
-                
-                # save message, so it exists to append tags to.
-                new_message.save()
-                
-                # got a list of one or more tags?
-                if ( ( tag_list_IN is not None ) and ( isinstance( tag_list_IN, list ) == True ) and ( len( tag_list_IN ) > 0 ) ):
-
-                    # yes.  Loop over tags list.
-                    for tag_to_apply in tag_list_IN:
+                    # tag the message with each tag in the list.
+                    new_message.tags.add( tag_to_apply )
                     
-                        # tag the message with each tag in the list.
-                        new_message.tags.add( tag_to_apply )
-                        
-                    #-- END loop over tag list. --#
+                #-- END loop over tag list. --#
 
-                #-- END check to see if tag list passed in. --#
-                
-                # place message in return reference.
-                message_OUT = new_message
+            #-- END check to see if tag list passed in. --#
             
-            else:
-            
-                # no application, which is required.
-                message_OUT = None
-            
-            #-- END check to see if application --#
-        
+            # place message in return reference.
+            message_OUT = new_message
+
         else:
         
             # no message, which is required.
@@ -190,4 +196,4 @@ class Message( models.Model ):
         
         return string_OUT
 
-#= End Topic Model =========================================================
+#= End Message Model =========================================================

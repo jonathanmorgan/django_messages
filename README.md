@@ -67,6 +67,7 @@ To create and retrieve messages:
     # set up message values
     application = "unit_test"
     message = "test message"
+    message_type = "test message type"
     label = "test"
     status = Message.STATUS_NEW
     tag_list = [ "awesome", "test" ]
@@ -74,6 +75,7 @@ To create and retrieve messages:
     # create instance
     # make instance
     message_instance = Message.create_message( message,
+                                               message_type_IN = message_type,
                                                application_IN = application,
                                                label_IN = label,
                                                tag_list_IN = tag_list,

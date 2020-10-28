@@ -39,12 +39,14 @@ class MessageModelTest( django.test.TestCase ):
         me = "test_create_message"
         application = ""
         message = ""
+        message_type = None
         label = ""
         status = ""
         tag_list = []
         message_instance = None
         test_application = ""
         test_message = ""
+        test_message_type = ""
         test_label = ""
         test_status = ""
         test_tag_list = []
@@ -78,6 +80,14 @@ class MessageModelTest( django.test.TestCase ):
         test_application = message_instance.application
         test_value = test_application
         should_be = Message.APPLICATION_DEFAULT
+        error_string = "Found " + what_is_it + " \"" + str( test_value ) + "\", should be \"" + str( should_be ) + "\""
+        self.assertEqual( test_value, should_be, msg = error_string )
+        
+        # message type
+        what_is_it = "message_type"
+        test_message_type = message_instance.message_type
+        test_value = test_message_type
+        should_be = None
         error_string = "Found " + what_is_it + " \"" + str( test_value ) + "\", should be \"" + str( should_be ) + "\""
         self.assertEqual( test_value, should_be, msg = error_string )
         
@@ -121,6 +131,7 @@ class MessageModelTest( django.test.TestCase ):
         # set up message values
         application = "unit_test"
         message = "test message"
+        message_type = "test message type"
         label = "test"
         status = Message.STATUS_NEW
         tag_list = [ "awesome", "test" ]
@@ -128,6 +139,7 @@ class MessageModelTest( django.test.TestCase ):
         # create instance
         # make instance
         message_instance = Message.create_message( message,
+                                                   message_type_IN = message_type,
                                                    application_IN = application,
                                                    label_IN = label,
                                                    tag_list_IN = tag_list,
@@ -148,6 +160,14 @@ class MessageModelTest( django.test.TestCase ):
         test_message = message_instance.message
         test_value = test_message
         should_be = message
+        error_string = "Found " + what_is_it + " \"" + str( test_value ) + "\", should be \"" + str( should_be ) + "\""
+        self.assertEqual( test_value, should_be, msg = error_string )
+        
+        # message type
+        what_is_it = "message_type"
+        test_message_type = message_instance.message_type
+        test_value = test_message_type
+        should_be = message_type
         error_string = "Found " + what_is_it + " \"" + str( test_value ) + "\", should be \"" + str( should_be ) + "\""
         self.assertEqual( test_value, should_be, msg = error_string )
         
@@ -215,6 +235,14 @@ class MessageModelTest( django.test.TestCase ):
         test_message = message_instance.message
         test_value = test_message
         should_be = message
+        error_string = "Found " + what_is_it + " \"" + str( test_value ) + "\", should be \"" + str( should_be ) + "\""
+        self.assertEqual( test_value, should_be, msg = error_string )
+        
+        # message type
+        what_is_it = "message_type"
+        test_message_type = message_instance.message_type
+        test_value = test_message_type
+        should_be = message_type
         error_string = "Found " + what_is_it + " \"" + str( test_value ) + "\", should be \"" + str( should_be ) + "\""
         self.assertEqual( test_value, should_be, msg = error_string )
         
