@@ -44,8 +44,9 @@ class Message( models.Model ):
     # django model fields
     #---------------------------------------------------------------------------
 
-    application = models.CharField( max_length = 255 )
     message = models.TextField()
+    message_type = models.CharField( max_length = 255, blank = True, null = True )
+    application = models.CharField( max_length = 255, blank = True, null = True )
     label = models.CharField( max_length = 255, blank = True, null = True )
     #status = models.CharField( max_length = 255, blank = True, null = True, choices = STATUS_CHOICES, default = STATUS_DEFAULT )
     status = models.CharField( max_length = 255, blank = True, null = True )
